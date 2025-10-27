@@ -1,0 +1,63 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform vars and local config (contienen secretos)
+*.tfvars
+*.tfvars.json
+terraform.tfvars
+terraform.tfvars.json
+.terraformrc
+terraform.rc
+
+# WordPress - configuración y contenidos no versionados
+wp-config.php
+wp-config-sample.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/backups/
+
+# Plugins / temas: ignorar dependencias generadas
+wp-content/plugins/*/node_modules/
+wp-content/plugins/*/vendor/
+wp-content/themes/*/node_modules/
+wp-content/themes/*/vendor/
+
+# Dependencias y builds
+vendor/
+node_modules/
+dist/
+build/
+
+# Entornos y logs
+.env
+.env.*
+*.log
+npm-debug.log
+yarn-error.log
+
+# Backups y editores
+*.bak
+*.backup
+*.swp
+*.swo
+
+# Certificados / claves
+*.pem
+*.key
+*.crt
+
+# Sistema operativo / IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.iml
