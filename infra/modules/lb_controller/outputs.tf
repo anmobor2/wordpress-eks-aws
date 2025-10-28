@@ -1,0 +1,1 @@
+output "irsa_role_arn" { value = module.irsa_alb.iam_role_arn }
