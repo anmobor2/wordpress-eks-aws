@@ -1,3 +1,12 @@
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+  config = {
+    bucket = "tfstate-mycompany"
+    key    = "vpc/dev.tfstate"
+    region = "eu-west-1"
+  }
+}
+
 locals {
   tags = merge(
     {
@@ -13,9 +22,9 @@ locals {
 module "eks" {
   source  = "../../modules/eks_fargate"
 
-  cluster_name       = var.cluster_name
-  vpc_id             = var.vpc_id
-  private_subnet_ids = var.private_subnet_ids
+  vpc_id  = data.terraform_remote_state.vpc.outputs.vpc_id
+  private_subnet_ids = data.terraform_remote_state.vpc.outputs.private_subnets
+  cluster_name = var.cluster_name
 
   # Pasa etiquetas comunes al módulo
   tags = local.tags
